@@ -1,4 +1,8 @@
-const API_BASE = '/api';
+const API_BASE =
+  import.meta.env.VITE_API_BASE_URL ||
+  (typeof window !== 'undefined' && window.location.hostname === 'localhost'
+    ? '/api'
+    : 'https://ai-mystery-room-cxvl.onrender.com/api');
 
 export async function checkHealth() {
   const res = await fetch(`${API_BASE}/health`);

@@ -7,7 +7,14 @@
 [![MongoDB](https://img.shields.io/badge/Database-MongoDB%20Atlas-47A248?logo=mongodb)](https://www.mongodb.com/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
+[![Live Demo](https://img.shields.io/badge/Live_App-ai--mystery--room.vercel.app-black?logo=vercel&style=for-the-badge)](https://ai-mystery-room-one.vercel.app/)
+[![Backend API](https://img.shields.io/badge/Backend_API-Render_Live-46E3B7?logo=render&style=for-the-badge)](https://ai-mystery-room-cxvl.onrender.com/api/health)
+
 > An advanced, immersive, AI-powered interactive detective investigation web application powered by **Google Gemini** and **MongoDB Atlas**, featuring structured JSON mystery generation, real-time suspect interrogations, an interactive corkboard evidence board with red yarn connections, and locked backend anti-cheat validation.
+
+- 🌐 **Live Web Application**: [https://ai-mystery-room-one.vercel.app/](https://ai-mystery-room-one.vercel.app/)
+- ⚡ **Production Backend API**: [https://ai-mystery-room-cxvl.onrender.com](https://ai-mystery-room-cxvl.onrender.com)
+- 🩺 **API Health Check**: [https://ai-mystery-room-cxvl.onrender.com/api/health](https://ai-mystery-room-cxvl.onrender.com/api/health)
 
 ---
 
