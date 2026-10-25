@@ -77,33 +77,55 @@ CRITICAL RULES:
     return generateProceduralMystery({ premise, difficulty, genre });
   }
 
-  // Attempt generation via Gemini API with retry
-  for (let attempt = 1; attempt <= 2; attempt++) {
+  // Attempt generation via Gemini API (fast fallback to procedural if rate-limited or unavailable)
+  for (let attempt = 1; attempt <= 1; attempt++) {
     try {
-      console.log(`[GeminiService] Calling Gemini API (attempt ${attempt}/2)...`);
+      console.log(`[GeminiService] Calling Gemini API...`);
       let jsonText = '';
 
-      // Try @google/genai SDK first
+      const withTimeout = (p, ms = 5000) =>
+        Promise.race([
+          p,
+          new Promise((_, reject) => setTimeout(() => reject(new Error('Gemini API timeout')), ms)),
+        ]);
+
+      // Try @google/genai SDK with modern models
       try {
         const ai = new GoogleGenAI({ apiKey });
-        const response = await ai.models.generateContent({
-          model: 'gemini-2.5-flash',
-          contents: systemPrompt,
-          config: {
-            responseMimeType: 'application/json',
-            temperature: 0.8,
-          },
-        });
+        const response = await withTimeout(
+          ai.models.generateContent({
+            model: 'gemini-3.8-flash',
+            contents: systemPrompt,
+            config: {
+              responseMimeType: 'application/json',
+              temperature: 0.8,
+            },
+          }),
+          4500
+        );
         jsonText = response.text || '';
       } catch (genAiError) {
-        console.warn(`[GeminiService] @google/genai failed (${genAiError.message}), trying @google/generative-ai fallback...`);
-        const genAI = new GoogleGenerativeAI(apiKey);
-        const model = genAI.getGenerativeModel({
-          model: 'gemini-1.5-flash',
-          generationConfig: { responseMimeType: 'application/json' },
-        });
-        const result = await model.generateContent(systemPrompt);
-        jsonText = result.response.text();
+        console.warn(`[GeminiService] gemini-3.8-flash attempt failed (${genAiError.message}), trying fallback...`);
+        try {
+          const ai = new GoogleGenAI({ apiKey });
+          const response = await withTimeout(
+            ai.models.generateContent({
+              model: 'gemini-2.5-flash',
+              contents: systemPrompt,
+              config: { responseMimeType: 'application/json' },
+            }),
+            4000
+          );
+          jsonText = response.text || '';
+        } catch (e2) {
+          const genAI = new GoogleGenerativeAI(apiKey);
+          const model = genAI.getGenerativeModel({
+            model: 'gemini-1.5-flash',
+            generationConfig: { responseMimeType: 'application/json' },
+          });
+          const result = await withTimeout(model.generateContent(systemPrompt), 4000);
+          jsonText = result.response.text();
+        }
       }
 
       const cleaned = cleanJsonText(jsonText);
