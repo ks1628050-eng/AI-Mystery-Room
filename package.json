@@ -1,0 +1,31 @@
+{
+  "name": "ai-mystery-room",
+  "version": "1.0.0",
+  "description": "AI-Powered Interactive Detective Mystery Web Application powered by Google Gemini",
+  "private": true,
+  "scripts": {
+    "install:all": "npm install && cd server && npm install && cd ../client && npm install",
+    "dev:server": "cd server && npm run dev",
+    "dev:client": "cd client && npm run dev",
+    "dev": "concurrently -n \"SERVER,CLIENT\" -c \"bgBlue.bold,bgMagenta.bold\" \"npm run dev:server\" \"npm run dev:client\"",
+    "build:client": "cd client && npm run build",
+    "build": "cd client && npm run build",
+    "start": "cd server && npm start"
+  },
+  "devDependencies": {
+    "concurrently": "^9.1.2"
+  },
+  "keywords": [
+    "ai",
+    "gemini",
+    "detective",
+    "mystery",
+    "noir",
+    "react",
+    "vite",
+    "express",
+    "mongodb"
+  ],
+  "author": "AI Mystery Room Team",
+  "license": "MIT"
+}

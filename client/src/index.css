@@ -1,0 +1,84 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  body {
+    background-color: #09090b;
+    color: #e2e8f0;
+    font-family: 'Inter', sans-serif;
+  }
+
+  /* Custom scrollbar for noir aesthetic */
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+  ::-webkit-scrollbar-track {
+    background: #111113;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #2e2e33;
+    border-radius: 3px;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background: #f59e0b;
+  }
+}
+
+/* Atmospheric Corkboard Texture */
+.corkboard-pattern {
+  background-color: #784a28;
+  background-image: 
+    radial-gradient(#5a3418 15%, transparent 16%),
+    radial-gradient(#965e34 15%, transparent 16%),
+    linear-gradient(45deg, rgba(0, 0, 0, 0.15) 25%, transparent 25%, transparent 75%, rgba(0, 0, 0, 0.15) 75%),
+    linear-gradient(45deg, rgba(0, 0, 0, 0.15) 25%, transparent 25%, transparent 75%, rgba(0, 0, 0, 0.15) 75%);
+  background-size: 24px 24px, 24px 24px, 48px 48px, 48px 48px;
+  background-position: 0 0, 12px 12px, 0 0, 24px 24px;
+}
+
+/* Typewriter blink cursor */
+@keyframes typewriterBlink {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0; }
+}
+
+.typewriter-cursor::after {
+  content: '▋';
+  display: inline-block;
+  color: #f59e0b;
+  animation: typewriterBlink 0.9s infinite;
+  margin-left: 2px;
+}
+
+/* Subtle Film Grain / Scanline effect */
+.noir-scanlines {
+  background: linear-gradient(
+    rgba(18, 16, 16, 0) 50%, 
+    rgba(0, 0, 0, 0.25) 50%
+  ), linear-gradient(
+    90deg,
+    rgba(255, 0, 0, 0.03),
+    rgba(0, 255, 0, 0.01),
+    rgba(0, 0, 255, 0.03)
+  );
+  background-size: 100% 3px, 6px 100%;
+  pointer-events: none;
+}
+
+/* Polaroids and pinned notes */
+.polaroid-card {
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.6), 0 8px 10px -6px rgba(0, 0, 0, 0.6);
+  transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.2s ease;
+}
+
+.polaroid-card:hover {
+  transform: translateY(-4px) scale(1.02);
+  box-shadow: 0 20px 30px -10px rgba(0, 0, 0, 0.8), 0 0 20px rgba(245, 158, 11, 0.2);
+}
+
+/* Red yarn connector glow */
+.red-yarn-line {
+  filter: drop-shadow(0 0 3px rgba(225, 29, 72, 0.8));
+}
