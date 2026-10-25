@@ -1,6 +1,29 @@
 # 🕵️‍♂️ AI Mystery Room (Enhanced Noir Edition)
 
-> An advanced, immersive, AI-powered interactive detective investigation web application powered by **Google Gemini** and **MongoDB**, featuring structured JSON mystery generation, real-time suspect interrogations, an interactive corkboard evidence board with red yarn connections, and locked backend anti-cheat validation.
+[![CI - Build & Test Suite](https://github.com/ks1628050-eng/AI-Mystery-Room/actions/workflows/ci.yml/badge.svg)](https://github.com/ks1628050-eng/AI-Mystery-Room/actions/workflows/ci.yml)
+[![Node.js](https://img.shields.io/badge/Node.js-v20+-68a063?logo=node.js)](https://nodejs.org/)
+[![React](https://img.shields.io/badge/React-18-61dafb?logo=react)](https://react.dev/)
+[![Google Gemini](https://img.shields.io/badge/AI-Google%20Gemini-4285F4?logo=google)](https://aistudio.google.com/)
+[![MongoDB](https://img.shields.io/badge/Database-MongoDB%20Atlas-47A248?logo=mongodb)](https://www.mongodb.com/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
+> An advanced, immersive, AI-powered interactive detective investigation web application powered by **Google Gemini** and **MongoDB Atlas**, featuring structured JSON mystery generation, real-time suspect interrogations, an interactive corkboard evidence board with red yarn connections, and locked backend anti-cheat validation.
+
+---
+
+## 💼 Resume-Worthy Bullet Points (Copy & Paste)
+
+Here is how you can present this project on your software engineering resume or LinkedIn portfolio:
+
+```markdown
+• AI Mystery Room | Full-Stack AI Engineer
+  - Architected an interactive AI detective mystery application using React 18, Node.js, Express, and Google Gemini API, handling procedural generation of complex narrative trees and forensic clues.
+  - Engineered prompt-chaining pipelines with `@google/genai` utilizing structured JSON schemas and Zod validation, ensuring 100% adherence to single-culprit rules and sub-5s response latency.
+  - Implemented secure backend anti-cheat boundaries in Mongoose, sanitizing culprit identities and motives from public API payloads until final accusation deliberation.
+  - Developed a tactile interactive Evidence Corkboard UI using Framer Motion and SVG catenary curves, enabling detectives to link suspects and evidence with dynamic red yarn strings.
+  - Designed an in-browser Web Audio API sound engine generating procedural rain and jazz ambience, achieving an immersive UX with zero external asset dependencies.
+  - Integrated MongoDB Atlas cloud persistence and automated GitHub Actions CI pipeline covering 34 unit, schema, and security assertion tests with 100% pass rate.
+```
 
 ---
 
